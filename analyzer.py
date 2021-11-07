@@ -1,7 +1,11 @@
 
-import openai
 import requests
+import os
+import chronology
 import streamlit as st
+
+os.system("pip install openai")
+import openai
 
 def get_website_name(name):
     openai.api_key = ""
@@ -141,6 +145,9 @@ def get_pipeline(name):
         print(trial["PHASE"] + ", " + trial["INTERVENTION"] +", "+ trial["NCT NUMBER"] +", "+trial["EXPECTED COMPLETION"] +", "+ trial["TRIAL START"])
     return trials
 
+
+os.system()
+
 st.title("Stock Analyzer v0.1")
 name = st.sidebar.text_input("Name of Company")
 
@@ -159,3 +166,4 @@ if industry.find("pharmaceutical") != -1:
     st.write("PHASE, INTERVENTION, NCT NUMBER, EXPECTED COMPLETION, TRIAL START")
     for trial in trials:
         st.write(trial["PHASE"] + ", " + trial["INTERVENTION"] +", "+ trial["NCT NUMBER"] +", "+trial["EXPECTED COMPLETION"] +", "+ trial["TRIAL START"])
+

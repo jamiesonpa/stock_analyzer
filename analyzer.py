@@ -146,8 +146,6 @@ def get_pipeline(name):
     return trials
 
 
-os.system()
-
 st.title("Stock Analyzer v0.1")
 name = st.sidebar.text_input("Name of Company")
 

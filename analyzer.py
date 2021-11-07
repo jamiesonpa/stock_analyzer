@@ -1,10 +1,6 @@
-import os
+
 import openai
-import json
 import requests
-import bs4
-from bs4 import BeautifulSoup
-import html
 import streamlit as st
 
 def get_website_name(name):
@@ -153,7 +149,7 @@ ticker = get_ticker(name)
 industry = get_industry(name)
 st.write("FETCHING DATA FOR " + name.upper())
 st.write("WEBSITE: "+(str(website)))
-st.write("TICKER: "+(str(ticker)))
+st.write("TICKEr: "+(str(ticker)))
 st.write("INDUSTRY: "+(str(industry)))
 if industry.find("pharmaceutical") != -1:
     indications = get_diseases(name)
@@ -163,4 +159,3 @@ if industry.find("pharmaceutical") != -1:
     st.write("PHASE, INTERVENTION, NCT NUMBER, EXPECTED COMPLETION, TRIAL START")
     for trial in trials:
         st.write(trial["PHASE"] + ", " + trial["INTERVENTION"] +", "+ trial["NCT NUMBER"] +", "+trial["EXPECTED COMPLETION"] +", "+ trial["TRIAL START"])
-

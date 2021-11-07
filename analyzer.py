@@ -149,19 +149,23 @@ def get_pipeline(name):
 st.title("Stock Analyzer v0.1")
 name = st.sidebar.text_input("Name of Company")
 
-website = get_website_name(name)
-ticker = get_ticker(name)
-industry = get_industry(name)
-st.write("FETCHING DATA FOR " + name.upper())
-st.write("WEBSITE: "+(str(website)))
-st.write("TICKEr: "+(str(ticker)))
-st.write("INDUSTRY: "+(str(industry)))
-if industry.find("pharmaceutical") != -1:
-    indications = get_diseases(name)
-    st.write("INDICATIONS: " + (str(indications)))
-    trials = get_pipeline(name)
-    st.write("\n\n----FETCHING CLINICAL PIPELINE----")
-    st.write("PHASE, INTERVENTION, NCT NUMBER, EXPECTED COMPLETION, TRIAL START")
-    for trial in trials:
-        st.write(trial["PHASE"] + ", " + trial["INTERVENTION"] +", "+ trial["NCT NUMBER"] +", "+trial["EXPECTED COMPLETION"] +", "+ trial["TRIAL START"])
+analyze = st.button("ANALYZYE")
+
+if analyze:
+
+    website = get_website_name(name)
+    ticker = get_ticker(name)
+    industry = get_industry(name)
+    st.write("FETCHING DATA FOR " + name.upper())
+    st.write("WEBSITE: "+(str(website)))
+    st.write("TICKER: "+(str(ticker)))
+    st.write("INDUSTRY: "+(str(industry)))
+    if industry.find("pharmaceutical") != -1:
+        indications = get_diseases(name)
+        st.write("INDICATIONS: " + (str(indications)))
+        trials = get_pipeline(name)
+        st.write("\n\n----FETCHING CLINICAL PIPELINE----")
+        st.write("PHASE, INTERVENTION, NCT NUMBER, EXPECTED COMPLETION, TRIAL START")
+        for trial in trials:
+            st.write(trial["PHASE"] + ", " + trial["INTERVENTION"] +", "+ trial["NCT NUMBER"] +", "+trial["EXPECTED COMPLETION"] +", "+ trial["TRIAL START"])
 

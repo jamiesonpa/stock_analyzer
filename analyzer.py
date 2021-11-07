@@ -5,6 +5,8 @@ import chronology
 import streamlit as st
 
 os.system("pip install openai")
+os.system("curl https://api.openai.com/v1/engines \
+  -H 'Authorization: Bearer "+st.secrets["API_KEY"]+"'")
 import openai
 
 def get_website_name(name):
@@ -158,7 +160,7 @@ if analyze:
     industry = get_industry(name)
     st.write("FETCHING DATA FOR " + name.upper())
     st.write("WEBSITE: "+(str(website)))
-    st.write("TICKER: "+(str(ticker)))
+    st.write("TICKEr: "+(str(ticker)))
     st.write("INDUSTRY: "+(str(industry)))
     if industry.find("pharmaceutical") != -1:
         indications = get_diseases(name)

@@ -5,8 +5,7 @@ import chronology
 import streamlit as st
 
 os.system("pip install openai")
-os.system("curl https://api.openai.com/v1/engines \
-  -H 'Authorization: Bearer "+st.secrets["API_KEY"]+"'")
+os.system("curl -u :"+st.secrets["API_KEY"]+" https://api.openai.com/v1/engines")
 import openai
 
 def get_website_name(name):

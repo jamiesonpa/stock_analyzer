@@ -5,7 +5,7 @@ import requests
 import bs4
 from bs4 import BeautifulSoup
 import html
-
+import streamlit as st
 
 def get_website_name(name):
     openai.api_key = ""
@@ -143,20 +143,24 @@ def get_pipeline(name):
             trial["TRIAL START"] = trial["TRIAl START"].split('",,"')[0]
     for trial in trials:
         print(trial["PHASE"] + ", " + trial["INTERVENTION"] +", "+ trial["NCT NUMBER"] +", "+trial["EXPECTED COMPLETION"] +", "+ trial["TRIAL START"])
+    return trials
 
+st.title("Stock Analyzer v0.1")
+name = st.sidebar.text_input("Name of Company")
 
-website = get_website_name("CRISPR Therapeutics")
-ticker = get_ticker("CRISPR Therapeutics")
-industry = get_industry("CRISPR Therapeutics")
-
-
-
-print(str(website))
-print(str(ticker))
-print(str(industry))
+website = get_website_name(name)
+ticker = get_ticker(name)
+industry = get_industry(name)
+st.write("FETCHING DATA FOR " + name.upper())
+st.write("WEBSITE: "+(str(website)))
+st.write("TICKER: "+(str(ticker)))
+st.write("INDUSTRY: "+(str(industry)))
 if industry.find("pharmaceutical") != -1:
-    indications = get_diseases("CRISPR Therapeutics")
-    print(str(indications))
-    pipeline = get_pipeline("CRISPR Therapeutics")
-    print(str(pipeline))
+    indications = get_diseases(name)
+    st.write("INDICATIONS: " + (str(indications)))
+    trials = get_pipeline(name)
+    st.write("\n\n----FETCHING CLINICAL PIPELINE----")
+    st.write("PHASE, INTERVENTION, NCT NUMBER, EXPECTED COMPLETION, TRIAL START")
+    for trial in trials:
+        st.write(trial["PHASE"] + ", " + trial["INTERVENTION"] +", "+ trial["NCT NUMBER"] +", "+trial["EXPECTED COMPLETION"] +", "+ trial["TRIAL START"])
 

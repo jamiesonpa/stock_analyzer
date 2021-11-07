@@ -3,10 +3,10 @@ import requests
 import os
 import chronology
 import streamlit as st
+import openai
 
 os.system("pip install openai")
-os.system("curl -u :"+st.secrets["API_KEY"]+" https://api.openai.com/v1/engines")
-import openai
+os.system("curl -u :"+st.secrets["API_KEY"]+" https://api.openai.com/v1/")
 
 def get_website_name(name):
     openai.api_key = ""
@@ -48,7 +48,6 @@ def get_ticker(name):
     retval = str(answer)
     return retval
     
-
 def get_industry(name):
     stock_name = name
     openai.api_key = st.secrets["API_KEY"]
@@ -149,8 +148,7 @@ def get_pipeline(name):
 
 st.title("Stock Analyzer v0.1")
 name = st.sidebar.text_input("Name of Company")
-
-analyze = st.button("ANALYZYE")
+analyze = st.sidebar.button("ANALYZYE")
 
 if analyze:
 

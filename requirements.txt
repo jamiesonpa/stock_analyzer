@@ -2,3 +2,4 @@ tensorflow
 chronology
 requests
 streamlit
+openai

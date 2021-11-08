@@ -6,7 +6,7 @@ import streamlit as st
 import openai
 
 os.system("pip install openai")
-os.system("curl -u :"+st.secrets["API_KEY"]+" https://api.openai.com/v1/engines/")
+# os.system("curl -u :"+st.secrets["API_KEY"]+" https://api.openai.com/v1/engines/")
 
 def get_website_name(name):
     openai.api_key = ""

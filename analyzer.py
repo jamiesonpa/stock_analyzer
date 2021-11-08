@@ -153,7 +153,7 @@ if analyze:
     industry = get_industry(name)
     st.write("FETCHING DATA FOR " + name.upper())
     st.write("WEBSITE: "+(str(website)))
-    st.write("TICKEr: "+(str(ticker)))
+    st.write("TICKER: "+(str(ticker)))
     st.write("INDUSTRY: "+(str(industry)))
     if industry.find("pharmaceutical") != -1:
         indications = get_diseases(name)

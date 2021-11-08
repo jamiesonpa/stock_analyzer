@@ -9,7 +9,6 @@ os.system("pip install openai")
 # os.system("curl -u :"+st.secrets["API_KEY"]+" https://api.openai.com/v1/engines/")
 
 def get_website_name(name):
-    openai.api_key = ""
     start_sequence = "\nA:"
     restart_sequence = "\n\nQ: "
     stock_name = name
@@ -29,7 +28,6 @@ def get_website_name(name):
     return retval
 
 def get_ticker(name):
-    openai.api_key = st.secrets["API_KEY"]
     start_sequence = "\nA:"
     restart_sequence = "\n\nQ: "
     stock_name = name
@@ -50,7 +48,6 @@ def get_ticker(name):
     
 def get_industry(name):
     stock_name = name
-    openai.api_key = st.secrets["API_KEY"]
     start_sequence = "\nA:"
     restart_sequence = "\n\nQ: "
     response = openai.Completion.create(
@@ -76,7 +73,6 @@ def get_industry(name):
 
 def get_diseases(name):
     stock_name = name
-    openai.api_key = st.secrets["API_KEY"]
     start_sequence = "\nA:"
     restart_sequence = "\n\nQ: "
     response = openai.Completion.create(
@@ -149,6 +145,7 @@ def get_pipeline(name):
 st.title("Stock Analyzer v0.1")
 name = st.sidebar.text_input("Name of Company")
 analyze = st.sidebar.button("ANALYZYE")
+openai.api_key = st.secrets["API_KEY"]
 
 if analyze:
     website = get_website_name(name)

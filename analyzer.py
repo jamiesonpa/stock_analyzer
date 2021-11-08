@@ -6,7 +6,7 @@ import streamlit as st
 import openai
 
 os.system("pip install openai")
-os.system("curl -u :"+st.secrets["API_KEY"]+" https://api.openai.com/v1/")
+os.system("curl -u :"+st.secrets["API_KEY"]+" https://api.openai.com/v1/engines/")
 
 def get_website_name(name):
     openai.api_key = ""
@@ -151,7 +151,6 @@ name = st.sidebar.text_input("Name of Company")
 analyze = st.sidebar.button("ANALYZYE")
 
 if analyze:
-
     website = get_website_name(name)
     ticker = get_ticker(name)
     industry = get_industry(name)

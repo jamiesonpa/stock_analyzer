@@ -5,7 +5,7 @@ import chronology
 import streamlit as st
 import openai
 
-os.system("python3 -m pip install openai")
+os.system("python3.7 -m pip install openai")
 # os.system("curl -u :"+st.secrets["API_KEY"]+" https://api.openai.com/v1/engines/")
 
 def get_website_name(name):
@@ -162,6 +162,5 @@ if analyze:
         st.write("\n\n----FETCHING CLINICAL PIPELINE----")
         st.write("PHASE, INTERVENTION, NCT NUMBER, EXPECTED COMPLETION, TRIAL START")
         for trial in trials:
-            hyperlink_format = '<a href="{link}">{text}</a>'
-            st.write(trial["PHASE"] + ", " + trial["INTERVENTION"] +", "+ hyperlink_format.format("https://clinicaltrials.gov/ct2/show/"+trial["NCT NUMBER"]) +", "+trial["EXPECTED COMPLETION"] +", "+ trial["TRIAL START"])
+            st.write(trial["PHASE"] + ", " + trial["INTERVENTION"] +", "+ "https://clinicaltrials.gov/ct2/show/"+trial["NCT NUMBER"] +", "+trial["EXPECTED COMPLETION"] +", "+ trial["TRIAL START"])
 
